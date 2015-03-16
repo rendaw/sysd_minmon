@@ -1,14 +1,15 @@
-= `sysd_minmon` Unit Monitor
+# `sysd_minmon` Unit Monitor
 
 `sysd_minmon` runs a script when selected systemd units change state (for example, 'activated' -> 'failed').  
 
 It can be used with both system and user systemd instances.  The included dbus policy file is installed automatically but is only required for system unit monitoring.
 
-=== Setup
+### Setup
 
-Run `sudo pip2 install git+https://github.com/Rendaw/sysd_minmon`.
+1. Install `dbus-glib`, `python2-gobject2`, and `python2-dbus` using your system package manager.
+2. Run `sudo pip2 install git+https://github.com/Rendaw/sysd_minmon`.
 
-=== Command line
+### Command line
 
 Run `sysd_minmon` to see command line arguments.
 
@@ -17,7 +18,7 @@ Run `sysd_minmon` to see command line arguments.
 2. The new state (ex: `failed`)
 3. The scope (either `system` or `user`)
 
-=== Running at startup
+### Running at startup
 To run `sysd_minmon` at startup you can create a systemd service file following this template:
 
 ```
@@ -39,7 +40,7 @@ WantedBy=multi-user.target
 
 Enable and start the service as usual.  You may wish to make this a `Requires` and `After` dependency of the watched services to ensure early failures aren't missed.
 
-=== Testing
+### Testing
 
 You can use this unit to test failure:
 ```
